@@ -563,9 +563,135 @@ section:first-of-type {
 }
 
 .about-content {
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
-  text-align: center;
+}
+
+.tech-summary {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+/* Code Block Styling */
+.code-block {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.95) 100%);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl), 0 0 40px rgba(99, 102, 241, 0.2);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  position: relative;
+  transition: all var(--transition-base);
+}
+
+.code-block::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(99, 102, 241, 0.05) 50%,
+      transparent);
+  transform: translateX(-100%);
+  animation: codeShine 3s ease-in-out infinite;
+}
+
+@keyframes codeShine {
+
+  0%,
+  100% {
+    transform: translateX(-100%);
+  }
+
+  50% {
+    transform: translateX(100%);
+  }
+}
+
+.code-block:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl), 0 0 50px rgba(99, 102, 241, 0.35);
+  border-color: rgba(99, 102, 241, 0.5);
+}
+
+.code-header {
+  background: rgba(15, 23, 42, 0.8);
+  padding: var(--space-sm) var(--space-lg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.code-lang {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: #60a5fa;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.code-file {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: #94a3b8;
+}
+
+.code-content {
+  padding: var(--space-xl);
+  margin: 0;
+  overflow-x: auto;
+}
+
+.code-content code {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  line-height: 1.8;
+  color: #e2e8f0;
+  display: block;
+  white-space: pre;
+}
+
+/* Syntax Highlighting */
+.code-keyword {
+  color: #c084fc;
+  font-weight: 600;
+}
+
+.code-class {
+  color: #60a5fa;
+  font-weight: 600;
+}
+
+.code-function {
+  color: #a78bfa;
+}
+
+.code-param {
+  color: #fb923c;
+  font-style: italic;
+}
+
+.code-string {
+  color: #34d399;
+}
+
+/* Tech Description */
+.tech-description {
+  font-size: var(--font-size-lg);
+  line-height: 1.8;
+  color: var(--color-text-secondary);
+  text-align: left;
+  margin: 0;
+  padding: 0 var(--space-md);
+}
+
+.tech-description:first-of-type {
+  margin-top: var(--space-lg);
 }
 
 .about p {
@@ -1019,6 +1145,26 @@ footer p {
     width: 40px;
     height: 3px;
   }
+
+  /* Code Block Mobile Adjustments */
+  .code-content {
+    padding: var(--space-md);
+  }
+
+  .code-content code {
+    font-size: 11px;
+    line-height: 1.6;
+  }
+
+  .code-header {
+    padding: var(--space-xs) var(--space-md);
+  }
+
+  .tech-description {
+    font-size: var(--font-size-base);
+    padding: 0;
+  }
+
 }
 
 @media (max-width: 480px) {
